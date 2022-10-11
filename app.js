@@ -5,12 +5,13 @@ const port = 3000
 
 
 app.use(express.json());
-
+app.use('/users', require('./api/user.api'));
+app.use('/book', require('./api/book.api'));
 
 
 
 mongoose
-    .connect('mongodb://127.0.0.1:27017/sara7a')
+    .connect('mongodb://127.0.0.1:27017/library')
     .then(() => {
         console.log("database connented");
     })
