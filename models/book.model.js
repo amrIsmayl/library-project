@@ -1,7 +1,9 @@
 
+const { string } = require("joi");
 const mongoose = require("mongoose");
 
 const schema = mongoose.Schema({
+    author:String,
     title: String,
     desc: String,
     quantity: Number,

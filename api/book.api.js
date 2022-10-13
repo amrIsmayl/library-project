@@ -1,13 +1,15 @@
-// const { auth } = require('../middleware/authentiction/auth');
-// const { addNews, allNews, userNews, update, deleteNews, searchByName, searchByTime, searchByLastDay, searches } = require('../services/news.service');
+const { auth } = require('../middleware/authentiction/auth');
+const { addbook, updateBook, getAllBooks, filterByAuthor, deleteBook } = require('../services/book.service');
 
-// const app = require('express').Router();
-
-// app.post('/', addBook)
-// app.get('/', allBook)
+const app = require('express').Router();
 
 
-// // app.post('/', auth, addNews)
+
+app.post('/', auth, addbook)
+    .post('/updateBook', auth, updateBook)
+    .get('/getAllBooks', getAllBooks)
+    .get('/filterByAuthor', filterByAuthor)
+    .post('/deleteBook', deleteBook)
 // // app.get('/', auth, allNews)
 // //     .get('/userNews', auth, userNews)
 // //     .put('/', auth, update)
@@ -18,4 +20,4 @@
 // //     .get('/searchByLastDay',auth,searchByLastDay)
 
 
-// module.exports = app;
+module.exports = app;

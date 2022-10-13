@@ -1,7 +1,7 @@
 const userModel = require('../models/user.model');
 const bcrypt = require('bcrypt');
 var jwt = require('jsonwebtoken');
-const { use } = require('../api/user.api');
+// const { use } = require('../api/user.api');
 
 
 
