@@ -1,6 +1,7 @@
 
 
 // const { string } = require('joi');
+const { number } = require('joi');
 const mongoose = require('mongoose');
 
 const schema = mongoose.Schema({

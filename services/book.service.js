@@ -1,21 +1,26 @@
 const bookModel = require("../models/book.model");
+const userModel = require("../models/user.model");
 
 
 
 module.exports.addbook = async (req, res) => {
     const { title, desc, author } = req.body;
-    let quantity = 0
-    let book = await bookModel.findOne({ title, author })
-    if (!book) {
-        quantity = 1;
-        await bookModel.insertMany({ author, title, desc, quantity, createdBy: req.id });
-        res.json({ message: 'success2' });
-    } else {
-        quantity = book.quantity + 1;
-        id = book.id
-        await bookModel.findByIdAndUpdate(id, { quantity })
-        res.json({ message: 'success1' });
+    let user = await userModel.findById({ _id: req.id })
+    if (user.role == 'admin') {
+        let quantity = 0
+        let book = await bookModel.findOne({ title, author })
+        if (!book) {
+            quantity = 1;
+            await bookModel.insertMany({ author, title, desc, quantity, createdBy: req.id });
+            res.json({ message: 'success2' });
+        } else {
+            quantity = book.quantity + 1;
+            id = book.id
+            await bookModel.findByIdAndUpdate(id, { quantity })
+            res.json({ message: 'success1' });
+        }
     }
+    res.json({message:"you are not authorized"})
 }
 
 
@@ -35,11 +40,17 @@ module.exports.getAllBooks = async (req, res) => {
 
 
 
+
 module.exports.filterByAuthor = async (req, res) => {
     const { author } = req.body;
-    let book = await bookModel.find({ author })
-    res.json({ message: "success", book })
+    let user = await userModel.findById({ _id: req.id })
+    if (user.role == 'admin') {
+        let book = await bookModel.find({ author })
+        res.json({ message: "success", book })
+    }
+    res.json({ message: "you are not authorized" })
 }
+
 
 
 
