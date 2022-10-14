@@ -1,0 +1,33 @@
+
+.back{
+  background-color: #fdfdfd;
+}
+
+.logoo {
+  width: 80px;
+  height: 70px;
+}
+
+.home{
+  /* background-color: tomato; */
+  height: 80vh;
+  background-image: url(../public/images/Books.jpg);
+}
+
+.homeData{
+  bottom: 30%;
+}
+
+.homeInfo{
+  height: 260px;
+  background-color: white;
+  opacity: 89%;
+}
+
+.fonts{
+  font-size: 4vw;
+}
+
+.colarB{
+  background-color: #7c98ca;
+}

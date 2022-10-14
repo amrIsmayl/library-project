@@ -1,7 +1,6 @@
 const userModel = require('../models/user.model');
 const bcrypt = require('bcrypt');
 var jwt = require('jsonwebtoken');
-// const { use } = require('../api/user.api');
 
 
 
@@ -15,7 +14,6 @@ module.exports.signup = async (req, res) => {
             await userModel.insertMany({ name, email, password: hash, role })
             res.json({ message: 'success' });
         });
-
     }
 };
 
